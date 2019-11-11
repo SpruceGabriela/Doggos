@@ -4,7 +4,7 @@ import 'package:meuapp/ui/splash.dart';
 
 void main(){
   runApp(MaterialApp(
-    home: Home(),
+    home: Splash(),
     debugShowCheckedModeBanner: false,
   ));
 }

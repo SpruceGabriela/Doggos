@@ -33,11 +33,20 @@ class DogoPage extends StatelessWidget {
       body: FutureBuilder(
         future: _getImage(),
         builder: (context, snapshot){
-          print(snapshot.data);
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
             case ConnectionState.none:
-              return Text('hdfsf fhyfr');
+              return Scaffold(
+                body: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Image.asset('img/giphy.gif'),
+                    ),
+                  ],
+                ),
+              );
               break;
             case ConnectionState.active:
             case ConnectionState.done:
@@ -49,10 +58,12 @@ class DogoPage extends StatelessWidget {
                       placeholder: kTransparentImage,
                       image: snapshot.data['results'][0]['urls']['small'],
                       height: 300,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   ),
                   Container(
+                    padding: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+
                     child: Column(
                       children: <Widget>[
                         Row(
@@ -61,7 +72,7 @@ class DogoPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               height: 50,
                               width: 50,
-                              child: Image(image: AssetImage('img/pawprint.png'),),
+                              child: Image(image: AssetImage('img/border-collie-dog-head.png'),),
                             ),
                             Text('Breed', style: TextStyle(fontSize: 20)),
                             Container(
@@ -70,6 +81,7 @@ class DogoPage extends StatelessWidget {
                             )
                           ],
                         ),
+                        Divider(),
                         Row(
                           children: <Widget>[
                             Container(
@@ -81,22 +93,39 @@ class DogoPage extends StatelessWidget {
                             Text('Temperament', style: TextStyle(fontSize: 20)),
                             Container(
                               padding: EdgeInsets.only(left: 20),
-                              child: Text(this.dogos['name'], style: TextStyle(color: Colors.grey),),
+                              child: Text(this.dogos['temperament'], style: TextStyle(color: Colors.grey),),
                             )
                           ],
                         ),
+                        Divider(),
                         Row(
                           children: <Widget>[
                             Container(
                               padding: EdgeInsets.all(10),
                               height: 50,
                               width: 50,
-                              child: Image(image: AssetImage('img/flag.png'),),
+                              child: Image(image: AssetImage('img/pawprint.png'),),
                             ),
-                            Text('Country', style: TextStyle(fontSize: 20)),
+                            Text('Type', style: TextStyle(fontSize: 20)),
                             Container(
                               padding: EdgeInsets.only(left: 20),
-                              child: Text(this.dogos['name'], style: TextStyle(color: Colors.grey),),
+                              child: Text(this.dogos['bred_for'], style: TextStyle(color: Colors.grey),),
+                            )
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              height: 50,
+                              width: 50,
+                              child: Image(image: AssetImage('img/scale.png'),),
+                            ),
+                            Text('Weight', style: TextStyle(fontSize: 20)),
+                            Container(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Text(this.dogos['weight']['metric'], style: TextStyle(color: Colors.grey),),
                             )
                           ],
                         ),
@@ -105,7 +134,9 @@ class DogoPage extends StatelessWidget {
                   ),
                 ],
               );
+              break;
             default:
+              return Text("sadsoadjsaodjsa");
           }
         },
       )

@@ -25,6 +25,7 @@ class _HomeState extends State<Home> {
       .then((data){
         setState(() {
           dogos = data;
+          FocusScope.of(context).unfocus();
         });
       });
   }
@@ -36,7 +37,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.pinkAccent,
         title: Text(
-          'Meu App', style: TextStyle(color: Colors.white),
+          'Doggos', style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),

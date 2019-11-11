@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:meuapp/ui/Home.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
+  @override
+  _SplashState createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +22,21 @@ class Splash extends StatelessWidget {
               image: AssetImage('img/dog-house.png'),
             ),
           ),
-          Text('Meu App', style: TextStyle(color: Colors.grey, fontSize: 20.0, fontWeight: FontWeight.bold), textAlign: TextAlign.center,)
+          Text('Doggos', style: TextStyle(
+              color: Colors.grey, fontSize: 20.0, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,)
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 2)).then((_){
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => Home())
+      );
+    });
   }
 }
