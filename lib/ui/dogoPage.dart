@@ -50,89 +50,98 @@ class DogoPage extends StatelessWidget {
               break;
             case ConnectionState.active:
             case ConnectionState.done:
-              return Column(
+              return SingleChildScrollView(
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Column(
                 children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image: snapshot.data['results'][0]['urls']['small'],
-                      height: 300,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+                Container(
 
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              height: 50,
-                              width: 50,
-                              child: Image(image: AssetImage('img/border-collie-dog-head.png'),),
-                            ),
-                            Text('Breed', style: TextStyle(fontSize: 20)),
-                            Container(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Text(this.dogos['name'], style: TextStyle(color: Colors.grey),),
-                            )
-                          ],
-                        ),
-                        Divider(),
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              height: 50,
-                              width: 50,
-                              child: Image(image: AssetImage('img/happiness.png'),),
-                            ),
-                            Text('Temperament', style: TextStyle(fontSize: 20)),
-                            Container(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Text(this.dogos['temperament'], style: TextStyle(color: Colors.grey),),
-                            )
-                          ],
-                        ),
-                        Divider(),
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              height: 50,
-                              width: 50,
-                              child: Image(image: AssetImage('img/pawprint.png'),),
-                            ),
-                            Text('Type', style: TextStyle(fontSize: 20)),
-                            Container(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Text(this.dogos['bred_for'], style: TextStyle(color: Colors.grey),),
-                            )
-                          ],
-                        ),
-                        Divider(),
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              height: 50,
-                              width: 50,
-                              child: Image(image: AssetImage('img/scale.png'),),
-                            ),
-                            Text('Weight', style: TextStyle(fontSize: 20)),
-                            Container(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Text(this.dogos['weight']['metric'], style: TextStyle(color: Colors.grey),),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                    padding: EdgeInsets.all(10),
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: snapshot.data['results'][0]['urls']['small'],
+                  height: 300,
+                  fit: BoxFit.fill,
+                ),
+              ),
+          Container(
+          padding: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+
+          child: Column(
+          children: <Widget>[
+          Row(
+          children: <Widget>[
+          Container(
+          padding: EdgeInsets.all(10),
+          height: 50,
+          width: 50,
+          child: Image(image: AssetImage('img/border-collie-dog-head.png'),),
+          ),
+          Text('Breed', style: TextStyle(fontSize: 18)),
+          Container(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(this.dogos['name'], style: TextStyle(color: Colors.grey),),
+          )
+          ],
+          ),
+          Divider(),
+          Row(
+          children: <Widget>[
+          Container(
+          padding: EdgeInsets.all(10),
+          height: 50,
+          width: 50,
+          child: Image(image: AssetImage('img/pawprint.png'),),
+          ),
+          Text('Type', style: TextStyle(fontSize: 18)),
+          Container(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(this.dogos['bred_for'], style: TextStyle(color: Colors.grey),),
+          )
+          ],
+          ),
+          Divider(),
+          Row(
+          children: <Widget>[
+          Container(
+          padding: EdgeInsets.all(10),
+          height: 50,
+          width: 50,
+          child: Image(image: AssetImage('img/scale.png'),),
+          ),
+          Text('Weight', style: TextStyle(fontSize: 18)),
+          Container(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(this.dogos['weight']['metric'], style: TextStyle(color: Colors.grey),),
+          )
+          ],
+          ),
+          Divider(),
+          Row(
+          children: <Widget>[
+          Container(
+          padding: EdgeInsets.all(10),
+          height: 50,
+          width: 50,
+          child: Image(image: AssetImage('img/happiness.png'),),
+          ),
+          Text('Temperament', style: TextStyle(fontSize: 18), textAlign: TextAlign.start,),
+          ],
+          ),
+          Container(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(this.dogos['temperament'], style: TextStyle(color: Colors.grey),),
+          ),
+          ],
+          ),
+          ),
+          ],
+          ),
+                ),
+
               );
               break;
             default:
@@ -140,6 +149,7 @@ class DogoPage extends StatelessWidget {
           }
         },
       )
+
     );
   }
 }
