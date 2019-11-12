@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:meuapp/ui/dogoPage.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.red.withOpacity(0.5),
         title: Text(
           'Doggos', style: TextStyle(color: Colors.white),
         ),
@@ -52,7 +53,7 @@ class _HomeState extends State<Home> {
                       child: TextField(
                         decoration: InputDecoration(
                           labelText: 'Search',
-                          labelStyle: TextStyle(color: Colors.pinkAccent, fontSize: 15.0)
+                          labelStyle: TextStyle(color: Colors.red.withOpacity(0.8), fontSize: 15.0)
                         ),
                         style: TextStyle(color: Colors.grey),
                         controller: _nameCtrl,
@@ -69,7 +70,7 @@ class _HomeState extends State<Home> {
                     Container(
                       width: 50.0,
                       child: RaisedButton(
-                      color: Colors.pinkAccent,
+                      color: Colors.red.withOpacity(0.8),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                       child: Container(
                         height: 30.0,
@@ -98,9 +99,9 @@ class _HomeState extends State<Home> {
           Container(
             height: 150,
             width: 150,
-            child: Image.asset('img/dog.png'),
+            child: FlareActor('assets/woof.flr', animation: 'happy',),
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 10,),
           Text('C\'mon, I\'m waiting for your search!', style: TextStyle(color: Colors.grey)),
         ],
       ),
